@@ -10,30 +10,79 @@ const navItems = [
 
 <header class="header">
   <div class="bar">
-    <nav class="nav">
+    <a href={base} class="brand">John Q</a>
+
+    <nav class="nav" aria-label="Main navigation">
       {navItems.map((item) => (
         <a href={item.href} class="nav-link">{item.name}</a>
       ))}
     </nav>
 
-    <form class="search" action="https://github.com/qinshujuan/minimal-blog/search" method="get" target="_blank">
-      <input name="q" class="search-input" type="search" placeholder="Search" />
-    </form>
+    <div class="right-spacer" aria-hidden="true"></div>
   </div>
 </header>
 
 <style>
-  .header { padding: 22px 0 16px; border-bottom: 1px solid #ececec; }
-  .bar { max-width: 980px; margin: 0 auto; padding: 0 16px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .nav { display:flex; gap:28px; align-items:center; }
-  .nav-link { font-size:14px; color:#666; text-decoration:none; font-weight:500; letter-spacing:0.01em; }
-  .nav-link:hover { color:#111; }
-  .search { margin-left:auto; }
-  .search-input { width:170px; border:1px solid #e5e5e5; border-radius:999px; padding:8px 12px; font-size:13px; }
-  .search-input:focus { outline:none; border-color:#bbb; }
-  @media (max-width: 680px) {
-    .bar{flex-direction:column; align-items:flex-start;}
-    .search{margin-left:0; width:100%;}
-    .search-input{width:100%;}
+  .header {
+    padding: 18px 0 14px;
+    border-bottom: 1px solid #e8e6e1;
+  }
+
+  .bar {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 120px 1fr 120px;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand {
+    font-size: 15px;
+    color: #222;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .brand:hover { color: #111; }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    color: #6a6a6a;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-link:hover { color: #111; }
+
+  .right-spacer {
+    width: 120px;
+    height: 1px;
+  }
+
+  @media (max-width: 760px) {
+    .bar {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .nav {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .right-spacer { display: none; }
   }
 </style>
