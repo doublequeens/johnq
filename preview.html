@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimalist Blog - 预览</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #000000;
+      background-color: #ffffff;
+    }
+
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-size-base: 16px;
+      --line-height: 1.6;
+      --spacing-2xs: 4px;
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 32px;
+      --spacing-xl: 48px;
+      --spacing-2xl: 64px;
+      --spacing-3xl: 96px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .header {
+      padding: 32px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: #666666;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #000000;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-top: 48px;
+      margin-bottom: 24px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 0;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-color: #d1d1d1;
+      transform: translateY(-2px);
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .card-date {
+      font-size: 13px;
+      color: #666666;
+    }
+
+    .card-category {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #f5f5f5;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #666666;
+    }
+
+    .card-excerpt {
+      font-size: 15px;
+      color: #333333;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .about-content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 0;
+    }
+
+    .about-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .about-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333333;
+      margin-bottom: 24px;
+    }
+
+    .about-section {
+      margin-top: 32px;
+    }
+
+    .about-subtitle {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .about-list {
+      padding-left: 24px;
+    }
+
+    .about-list li {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333333;
+      margin-bottom: 12px;
+    }
+
+    .search-container {
+      padding: 32px 0;
+      border-top: 1px solid #e5e5e5;
+      margin-top: 48px;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 8px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: rgba(0, 0, 128, 1);
+      box-shadow: 0 0 0 3px rgba(0, 0, 128, 0.3);
+    }
+
+    .search-button {
+      padding: 12px 16px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .search-button:hover {
+      background: #fafafa;
+      border-color: #d1d1d1;
+    }
+
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid #e5e5e5;
+      text-align: center;
+    }
+
+    .copyright {
+      font-size: 13px;
+      color: #666666;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 24px 16px;
+      }
+
+      .nav {
+        gap: 16px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#technical" class="nav-link">Technical</a>
+      <a href="#life" class="nav-link">Life</a>
+      <a href="#about" class="nav-link">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Technical Articles Section -->
+    <section>
+      <h1 class="section-title">Technical Articles</h1>
+      <div class="cards-grid">
+        <article class="card">
+          <h2 class="card-title">Building Fast Web Sites with Astro</h2>
+          <div class="card-meta">
+            <time class="card-date">2024-03-02</time>
+            <span class="card-category">Technical</span>
+            <span class="card-read-time">7 min read</span>
+          </div>
+          <p class="card-excerpt">Learn how to create performant static websites with Astro's zero JavaScript architecture. This modern framework delivers exceptional speed and great developer experience.</p>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Understanding TypeScript Generics</h2>
+          <div class="card-meta">
+            <time class="card-date">2024-03-01</time>
+            <span class="card-category">Technical</span>
+            <span class="card-read-time">10 min read</span>
+          </div>
+          <p class="card-excerpt">TypeScript generics are a powerful feature that allows you to write reusable, type-safe code while still maintaining type safety.</p>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Getting Started with React</h2>
+          <div class="card-meta">
+            <time class="card-date">2024-02-28</time>
+            <span class="card-category">Technical</span>
+            <span class="card-read-time">5 min read</span>
+          </div>
+          <p class="card-excerpt">React is a JavaScript library for building user interfaces. Learn the basics of components, state, and hooks.</p>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">CSS Grid Layout</h2>
+          <div class="card-meta">
+            <time class="card-date">2024-02-25</time>
+            <span class="card-category">Technical</span>
+            <span class="card-read-time">8 min read</span>
+          </div>
+          <p class="card-excerpt">CSS Grid is a powerful two-dimensional layout system that makes it easy to design responsive web layouts without using floats or positioning.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Life Articles Section -->
+    <section>
+      <h1 class="section-title">Life Articles</h1>
+      <div class="cards-grid">
+        <article class="card">
+          <h2 class="card-title">A Day of Minimalism</h2>
+          <div class="card-meta">
+            <time class="card-date">2024-03-02</time>
+            <span class="card-category">Life</span>
+            <span class="card-read-time">3 min read</span>
+          </div>
+          <p class="card-excerpt">Today I decided to practice minimalism in every aspect of my life - from my workspace to my digital habits.</p>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">My Journey into Minimalism</h2>
+          <div class="card-meta">
+            <time class="card-date">2024-02-28</time>
+            <span class="card-category">Life</span>
+            <span class="card-read-time">4 min read</span>
+          </div>
+          <p class="card-excerpt">Minimalism isn't just about owning less stuff. It's about being intentional with your time, energy, and attention.</p>
+        </article>
+
+        <article class="card">
+          <h2 class="card-title">Learning to Code</h2>
+          <div class="card-meta">
+            <time class="card-date">2024-02-25</time>
+            <span class="card-category">Life</span>
+            <span class="card-read-time">6 min read</span>
+          </div>
+          <p class="card-excerpt">Learning to code was one of the most challenging and rewarding experiences of my life.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-content">
+      <h1 class="about-title">About</h1>
+      <p class="about-text">
+        Hi, I'm Your Name. I'm a minimalist designer and developer who enjoys writing about technology and life.
+      </p>
+      <p class="about-text">
+        This blog is a collection of my thoughts, tutorials, and personal reflections. I believe in keeping things simple and focused.
+      </p>
+      <div class="about-section">
+        <h2 class="about-subtitle">What I Write About</h2>
+        <ul class="about-list">
+          <li>Technical articles and tutorials</li>
+          <li>Personal reflections and life lessons</li>
+          <li>Design and development experiments</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Search Bar at Bottom -->
+  <div class="search-container">
+    <form class="search-form" onsubmit="event.preventDefault(); alert('This is a preview - search will go to GitHub in the real blog!');">
+      <input type="search" placeholder="Search articles..." class="search-input" />
+      <button type="submit" class="search-button">🔍</button>
+    </form>
+  </div>
+
+  <footer class="footer">
+    <p class="copyright">
+      © 2024 Your Name
+    </p>
+  </footer>
+</body>
+</html>

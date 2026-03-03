@@ -1,0 +1,30 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('technical')).sort((a,b)=> b.data.date.valueOf()-a.data.date.valueOf());
+const base = import.meta.env.BASE_URL;
+const fmt = (d: Date) => d.toISOString().slice(0,10);
+---
+
+<MainLayout title="Technical - Minimalist Blog">
+  <h1 class="page-title">Technical</h1>
+  <div class="cards-grid">
+    {posts.map((post) => (
+      <a class="card" href={`${base}technical/${post.id}/`}>
+        <h2 class="card-title">{post.data.title}</h2>
+        <div class="card-meta">
+          <time class="card-date">{fmt(post.data.date)}</time>
+          {post.data.readTime && <span class="card-read-time">{post.data.readTime}</span>}
+        </div>
+        <p class="card-excerpt">{post.data.excerpt}</p>
+      </a>
+    ))}
+  </div>
+</MainLayout>
+
+<style>
+  .page-title { font-size: 34px; font-weight: 700; margin: 20px 0 18px; }
+  .cards-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
+  a.card{ text-decoration:none; color:inherit; }
+</style>

@@ -1,0 +1,39 @@
+---
+const base = import.meta.env.BASE_URL;
+const navItems = [
+  { name: 'Home', href: `${base}` },
+  { name: 'Technical', href: `${base}technical/` },
+  { name: 'Life', href: `${base}life/` },
+  { name: 'About', href: `${base}about/` }
+];
+---
+
+<header class="header">
+  <div class="bar">
+    <nav class="nav">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-link">{item.name}</a>
+      ))}
+    </nav>
+
+    <form class="search" action="https://github.com/qinshujuan/minimal-blog/search" method="get" target="_blank">
+      <input name="q" class="search-input" type="search" placeholder="Search" />
+    </form>
+  </div>
+</header>
+
+<style>
+  .header { padding: 22px 0 16px; border-bottom: 1px solid #ececec; }
+  .bar { max-width: 980px; margin: 0 auto; padding: 0 16px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .nav { display:flex; gap:28px; align-items:center; }
+  .nav-link { font-size:14px; color:#666; text-decoration:none; font-weight:500; letter-spacing:0.01em; }
+  .nav-link:hover { color:#111; }
+  .search { margin-left:auto; }
+  .search-input { width:170px; border:1px solid #e5e5e5; border-radius:999px; padding:8px 12px; font-size:13px; }
+  .search-input:focus { outline:none; border-color:#bbb; }
+  @media (max-width: 680px) {
+    .bar{flex-direction:column; align-items:flex-start;}
+    .search{margin-left:0; width:100%;}
+    .search-input{width:100%;}
+  }
+</style>

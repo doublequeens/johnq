@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-size-base: 16px;
+    --line-height: 1.6;
+    
+    --spacing-2xs: 4px;
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+    --spacing-3xl: 96px;
+  }
+
+  body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: #111111;
+    background-color: #f6f5f2;
+  }
+
+  h1 {
+    font-family: var(--font-family);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+  }
+
+  h2 {
+    font-family: var(--font-family);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-md);
+  }
+
+  h3 {
+    font-family: var(--font-family);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  p {
+    margin-bottom: var(--spacing-md);
+  }
+
+  ul, ol {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-md);
+  }
+
+  li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  a {
+    color: #000080;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: #0000ff;
+  }
+
+  .meta {
+    font-family: var(--font-family);
+    font-size: 14px;
+    color: #666666;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .article-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+  }
+
+  .article-item:hover {
+    background-color: #fafafa;
+  }
+
+  .article-date {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xs);
+  }
+
+  .article-date .month {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #666666;
+  }
+
+  .article-date .day {
+    font-size: 28px;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .article-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .article-title:hover {
+    color: #000080;
+  }
+
+  .article-read-time {
+    font-size: 13px;
+    color: #999999;
+    margin-top: var(--spacing-xs);
+  }
+}
+
+@layer utilities {
+  .progress-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #f5f5f5;
+    z-index: 1000;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 128, 1) 0%,
+      rgba(0, 0, 128, 0.7) 50%,
+      rgba(0, 0, 128, 0.1) 100%
+    );
+    box-shadow: 0 0 8px rgba(0, 0, 128, 0.5),
+                  0 0 15px rgba(0, 0, 128, 0.3);
+    transition: width 0.1s linear;
+  }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-color: #d1d1d1;
+    transform: translateY(-2px);
+  }
+
+  .card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-date {
+    font-size: 13px;
+    color: #666666;
+  }
+
+  .card-category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #666666;
+  }
+
+  .card-excerpt {
+    font-size: 15px;
+    color: #333333;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
