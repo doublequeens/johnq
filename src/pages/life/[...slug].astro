@@ -21,10 +21,14 @@ const fmt = post.data.date.toISOString().slice(0, 10);
           class="toc-toggle"
           id="toc-toggle"
           type="button"
+          aria-label="Table of contents"
+          title="Table of contents"
           aria-expanded="false"
           aria-controls="toc-panel"
         >
-          Contents
+          <svg class="toc-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6.5h16M4 12h16M4 17.5h16" />
+          </svg>
         </button>
       )}
     </div>
@@ -185,15 +189,27 @@ const fmt = post.data.date.toISOString().slice(0, 10);
 
   .toc-toggle {
     flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 0;
     background: transparent;
     color: #6a6a6a;
-    font-size: 12px;
-    font-weight: 500;
     cursor: pointer;
-    padding: 4px 2px;
+    padding: 0;
   }
   .toc-toggle:hover { color: #161616; }
+
+  .toc-icon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    fill: none;
+    stroke-linecap: round;
+  }
 
   .progress-container {
     height: 2px;
