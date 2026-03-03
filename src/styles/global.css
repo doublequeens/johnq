@@ -22,8 +22,8 @@
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     line-height: var(--line-height);
-    color: #111111;
-    background-color: #f6f5f2;
+    color: #1b1b1b;
+    background-color: #f4f2ec;
   }
 
   h1 {
