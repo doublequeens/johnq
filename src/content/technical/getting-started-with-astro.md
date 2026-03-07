@@ -2,6 +2,7 @@
 title: Getting Started with Astro
 excerpt: Learn how to set up your first Astro project with Tailwind CSS and deploy it to GitHub Pages.
 date: 2024-03-02
+cover: /images/posts/getting-started-with-astro.svg
 readTime: 5 min read
 ---
 

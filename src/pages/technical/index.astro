@@ -2,29 +2,124 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('technical')).sort((a,b)=> b.data.date.valueOf()-a.data.date.valueOf());
+const posts = (await getCollection('technical')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const base = import.meta.env.BASE_URL;
-const fmt = (d: Date) => d.toISOString().slice(0,10);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+const coverSrc = (cover?: string) => {
+  if (!cover) return '';
+  if (cover.startsWith('http://') || cover.startsWith('https://')) return cover;
+  const cleanBase = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const cleanCover = cover.startsWith('/') ? cover : `/${cover}`;
+  return `${cleanBase}${cleanCover}`;
+};
 ---
 
-<MainLayout title="Technical - Minimalist Blog">
-  <h1 class="page-title">Technical</h1>
-  <div class="cards-grid">
-    {posts.map((post) => (
-      <a class="card" href={`${base}technical/${post.id}/`}>
-        <h2 class="card-title">{post.data.title}</h2>
-        <div class="card-meta">
-          <time class="card-date">{fmt(post.data.date)}</time>
-          {post.data.readTime && <span class="card-read-time">{post.data.readTime}</span>}
-        </div>
-        <p class="card-excerpt">{post.data.excerpt}</p>
-      </a>
-    ))}
+<MainLayout title="Engineering - Minimalist Blog">
+  <div class="page-shell">
+    <header class="page-head">
+      <h1 class="page-title">Engineering</h1>
+      <p class="page-subtitle">All technical posts in a three-column feed.</p>
+    </header>
+
+    <section class="cards-grid" aria-label="Engineering posts">
+      {posts.map((post) => (
+        <a class="post-card" href={`${base}technical/${post.id}/`}>
+          {post.data.cover && (
+            <img class="post-cover" src={coverSrc(post.data.cover)} alt={`${post.data.title} cover`} loading="lazy" />
+          )}
+          <div class="post-body">
+            <div class="meta-row">
+              <span class="category">Engineering</span>
+              <time>{fmt(post.data.date)}</time>
+            </div>
+            <h2 class="post-title">{post.data.title}</h2>
+            <p class="post-excerpt">{post.data.excerpt}</p>
+          </div>
+        </a>
+      ))}
+    </section>
   </div>
 </MainLayout>
 
 <style>
-  .page-title { font-size: 34px; font-weight: 700; margin: 20px 0 18px; }
-  .cards-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
-  a.card{ text-decoration:none; color:inherit; }
+  .page-shell {
+    width: min(1280px, calc(100vw - 64px));
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 0 28px;
+  }
+
+  .page-head { margin: 10px 0 24px; }
+  .page-title {
+    margin: 0;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .page-subtitle { margin: 10px 0 0; color: #5d5d5d; font-size: 18px; }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px 24px;
+  }
+
+  .post-card {
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #ececec;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    background: #e8e8e8;
+  }
+
+  .post-body { padding: 16px 18px 18px; }
+
+  .meta-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #696969;
+    font-size: 12px;
+  }
+
+  .category {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+
+  .post-title {
+    margin: 10px 0;
+    font-size: 30px;
+    line-height: 1.16;
+    letter-spacing: -0.015em;
+  }
+
+  .post-excerpt {
+    margin: 0;
+    color: #4d4d4d;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 1180px) {
+    .page-shell { width: min(1020px, calc(100vw - 36px)); }
+    .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 760px) {
+    .page-shell { width: calc(100vw - 24px); }
+    .page-title { font-size: 40px; }
+    .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+    .post-title { font-size: 25px; }
+  }
 </style>

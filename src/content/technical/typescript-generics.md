@@ -2,6 +2,7 @@
 title: Understanding TypeScript Generics
 excerpt: Learn about TypeScript generics and how to use them to write type-safe code.
 date: 2024-03-01
+cover: /images/posts/typescript-generics.svg
 readTime: 7 min read
 ---
 

@@ -2,6 +2,7 @@
 title: A Day of Minimalism
 excerpt: Today I decided to practice minimalism in every aspect of my life - from my workspace to my digital habits.
 date: 2024-03-02
+cover: images/posts/a-day-of-minimalism.jpg
 readTime: 3 min read
 ---
 

@@ -18,7 +18,7 @@ const navItems = [
       ))}
     </nav>
 
-    <div class="right-spacer" aria-hidden="true"></div>
+    <div class="right-spacer" aria-hidden="true">John Q</div>
   </div>
 </header>
 
@@ -29,59 +29,89 @@ const navItems = [
   }
 
   .bar {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 0 16px;
+    width: min(1280px, calc(100vw - 64px));
+    margin-left: 50%;
+    transform: translateX(-50%);
     display: grid;
-    grid-template-columns: 170px 1fr 170px;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 8px;
+    gap: 18px;
   }
 
-  .brand {
-    font-size: 21px;
-    color: #181818;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+  .brand,
+  .right-spacer {
+    font-size: 35px;
     line-height: 1;
+    letter-spacing: -0.025em;
+    font-weight: 400;
     white-space: nowrap;
   }
 
+  .brand {
+    color: #181818;
+    text-decoration: none;
+  }
+
   .brand:hover { color: #101010; }
+
+  .right-spacer {
+    visibility: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
 
   .nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 26px;
+    gap: 30px;
   }
 
   .nav-link {
-    font-size: 14px;
-    color: #6a6a6a;
+    font-size: 20px;
+    color: #4b4b4b;
     text-decoration: none;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1;
   }
 
   .nav-link:hover { color: #111; }
 
-  .right-spacer {
-    width: 170px;
-    height: 1px;
+  @media (max-width: 1180px) {
+    .bar {
+      width: min(1020px, calc(100vw - 36px));
+    }
+
+    .brand,
+    .right-spacer {
+      font-size: 42px;
+    }
+
+    .nav-link {
+      font-size: 20px;
+    }
   }
 
   @media (max-width: 760px) {
     .bar {
+      width: calc(100vw - 24px);
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 34px;
     }
 
     .nav {
       justify-content: flex-start;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
+    }
+
+    .nav-link {
+      font-size: 24px;
     }
 
     .right-spacer { display: none; }

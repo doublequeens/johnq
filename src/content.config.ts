@@ -9,6 +9,7 @@ const technical = defineCollection({
     excerpt: z.string(),
     date: z.coerce.date(),
     readTime: z.string().optional(),
+    cover: z.string().optional(),
   }),
 });
 
@@ -19,6 +20,7 @@ const life = defineCollection({
     excerpt: z.string(),
     date: z.coerce.date(),
     readTime: z.string().optional(),
+    cover: z.string().optional(),
   }),
 });
 

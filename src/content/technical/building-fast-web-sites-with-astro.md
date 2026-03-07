@@ -2,6 +2,7 @@
 title: Building Fast Web Sites with Astro
 excerpt: Learn how to create performant static websites with Astro's zero JavaScript architecture. This modern framework delivers exceptional speed and great developer experience.
 date: 2024-03-02
+cover: /images/posts/building-fast-web-sites-with-astro.svg
 readTime: 7 min read
 ---
 

@@ -1,4 +1,4 @@
-# Minimalist Blog - Astro + Tailwind CSS
+# John Q's Blog - Astro + Tailwind CSS
 
 A minimalist personal blog inspired by Alex MacCaw's design, built with Astro and Tailwind CSS.
 

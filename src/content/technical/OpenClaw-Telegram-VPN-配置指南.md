@@ -2,6 +2,7 @@
 title: OpenClaw Telegram 通道 VPN/代理配置完整指南
 excerpt: 在中国大陆环境下，为 OpenClaw Telegram 通道配置代理并完成故障排查的实战指南。
 date: 2026-03-02
+cover: /images/posts/openclaw-telegram-vpn-guide.jpg
 readTime: 8 min read
 ---
 

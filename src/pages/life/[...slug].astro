@@ -10,6 +10,13 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const fmt = post.data.date.toISOString().slice(0, 10);
+const coverSrc = (cover?: string) => {
+  if (!cover) return '';
+  if (cover.startsWith('http://') || cover.startsWith('https://')) return cover;
+  const cleanBase = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const cleanCover = cover.startsWith('/') ? cover : `/${cover}`;
+  return `${cleanBase}${cleanCover}`;
+};
 ---
 
 <MainLayout title={`${post.data.title} - Life`}>
@@ -52,6 +59,9 @@ const fmt = post.data.date.toISOString().slice(0, 10);
     <header class="post-header" id="post-header">
       <h1 class="post-title">{post.data.title}</h1>
       <p class="post-meta">{fmt}{post.data.readTime ? ` · ${post.data.readTime}` : ''}</p>
+      {post.data.cover && (
+        <img class="post-cover" src={coverSrc(post.data.cover)} alt={`${post.data.title} cover`} loading="eager" />
+      )}
     </header>
 
     <div class="post-content">
@@ -257,6 +267,15 @@ const fmt = post.data.date.toISOString().slice(0, 10);
   .post-header { margin: 10px 0 20px; }
   .post-title { font-size: 42px; line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 8px; }
   .post-meta { color: #666; font-size: 14px; margin: 0; }
+  .post-cover {
+    width: 100%;
+    display: block;
+    margin-top: 16px;
+    border-radius: 10px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #ececec;
+  }
 
   .post-content :global(h2) { margin-top: 36px; font-size: 30px; }
   .post-content :global(p), .post-content :global(li) { font-size: 18px; line-height: 1.78; color: #151515; }

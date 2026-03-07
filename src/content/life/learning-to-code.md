@@ -2,6 +2,7 @@
 title: Learning to Code
 excerpt: The lessons I learned when teaching myself how to code and the journey that followed.
 date: 2024-02-25
+cover: /images/posts/learning-to-code.svg
 readTime: 4 min read
 ---
 

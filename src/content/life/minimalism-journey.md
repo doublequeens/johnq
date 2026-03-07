@@ -2,6 +2,7 @@
 title: My Journey into Minimalism
 excerpt: How I simplified my life and found more joy in less.
 date: 2024-02-28
+cover: /images/posts/minimalism-journey.svg
 readTime: 3 min read
 ---
 
