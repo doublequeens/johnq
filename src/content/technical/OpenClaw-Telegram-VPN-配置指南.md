@@ -6,11 +6,9 @@ cover: /images/posts/openclaw-telegram-vpn-guide.jpg
 readTime: 8 min read
 ---
 
-# OpenClaw Telegram 通道 VPN/代理配置完整指南
-
 ## 前言
 
-在中国大陆使用 OpenClaw 的 Telegram 通道时，由于 Telegram API (`api.telegram.org`) 被网络屏蔽，直接配置会导致连接失败。本文基于实际调试经验，详细说明问题现象、错误日志、配置方法和排查步骤。
+在中国大陆使用 [OpenClaw](https://openclaw.ai/) 的 Telegram 通道时，由于 Telegram API (`api.telegram.org`) 被网络屏蔽，直接配置会导致连接失败。本文基于实际调试经验，详细说明问题现象、错误日志、配置方法和排查步骤。
 
 ---
 
@@ -53,7 +51,7 @@ readTime: 8 min read
 
 **Telegram API 在中国大陆被屏蔽**
 
-OpenClaw 的 Telegram 通道需要访问 `https://api.telegram.org`，但该域名在大陆无法直接访问。因此所有 HTTP 请求都会失败，表现为 "Network request failed"。
+[OpenClaw](https://openclaw.ai/) 的 Telegram 通道需要访问 `https://api.telegram.org`，但该域名在大陆无法直接访问。因此所有 HTTP 请求都会失败，表现为 "Network request failed"。
 
 ---
 

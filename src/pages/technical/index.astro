@@ -17,7 +17,7 @@ const coverSrc = (cover?: string) => {
 <MainLayout title="Engineering - Minimalist Blog">
   <div class="page-shell">
     <header class="page-head">
-      <h1 class="page-title">Engineering</h1>
+      <h1 class="page-title">Technical</h1>
       <p class="page-subtitle">All technical posts in a three-column feed.</p>
     </header>
 
@@ -30,10 +30,10 @@ const coverSrc = (cover?: string) => {
           <div class="post-body">
             <div class="meta-row">
               <span class="category">Engineering</span>
-              <time>{fmt(post.data.date)}</time>
             </div>
             <h2 class="post-title">{post.data.title}</h2>
             <p class="post-excerpt">{post.data.excerpt}</p>
+            <time class="post-date">{fmt(post.data.date)}</time>
           </div>
         </a>
       ))}
@@ -52,9 +52,10 @@ const coverSrc = (cover?: string) => {
   .page-head { margin: 10px 0 24px; }
   .page-title {
     margin: 0;
-    font-size: 56px;
-    line-height: 1;
-    letter-spacing: -0.02em;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    font-weight: 400;
   }
   .page-subtitle { margin: 10px 0 0; color: #5d5d5d; font-size: 18px; }
 
@@ -102,6 +103,15 @@ const coverSrc = (cover?: string) => {
     font-size: 30px;
     line-height: 1.16;
     letter-spacing: -0.015em;
+    font-weight: 400;
+  }
+
+  .post-date {
+    display: block;
+    margin: 14px 0 10px;
+    color: #696969;
+    font-size: 12px;
+    letter-spacing: 0.02em;
   }
 
   .post-excerpt {

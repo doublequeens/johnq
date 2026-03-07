@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 
 const technicalPosts = (await getCollection('technical')).map((post) => ({
   ...post,
-  category: 'Engineering',
+  category: 'Technical',
   href: `technical/${post.id}/`,
 }));
 
@@ -52,10 +52,10 @@ const coverSrc = (cover?: string) => {
             <div class="meta-row">
               <span class="pill">Latest</span>
               <span class="category">{latestPost.category}</span>
-              <time>{fmt(latestPost.data.date)}</time>
             </div>
             <h2 class="featured-title">{latestPost.data.title}</h2>
             <p class="featured-excerpt">{latestPost.data.excerpt}</p>
+            <time class="featured-date">{fmt(latestPost.data.date)}</time>
           </div>
         </a>
       </section>
@@ -72,10 +72,10 @@ const coverSrc = (cover?: string) => {
             <div class="post-body">
               <div class="meta-row">
                 <span class="category">{post.category}</span>
-                <time>{fmt(post.data.date)}</time>
               </div>
               <h3 class="post-title">{post.data.title}</h3>
               <p class="post-excerpt">{post.data.excerpt}</p>
+              <time class="post-date">{fmt(post.data.date)}</time>
             </div>
           </a>
         ))}
@@ -128,10 +128,19 @@ const coverSrc = (cover?: string) => {
   }
   .featured-title {
     margin: 14px 0 14px;
-    font-size: 46px;
+    font-size: 30px;
     line-height: 1.08;
     letter-spacing: -0.02em;
+    font-weight: 400;
   }
+  .featured-date {
+    display: block;
+    margin: 14px 0 12px;
+    color: #696969;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+
   .featured-excerpt {
     margin: 0;
     color: #4e4e4e;
@@ -204,6 +213,15 @@ const coverSrc = (cover?: string) => {
     font-size: 30px;
     line-height: 1.17;
     letter-spacing: -0.015em;
+    font-weight: 400;
+  }
+
+  .post-date {
+    display: block;
+    margin: 14px 0 10px;
+    color: #696969;
+    font-size: 12px;
+    letter-spacing: 0.02em;
   }
 
   .post-excerpt {
@@ -217,7 +235,7 @@ const coverSrc = (cover?: string) => {
     .page-shell { width: min(1020px, calc(100vw - 36px)); }
     .featured-card { grid-template-columns: 1fr; }
     .featured-cover { min-height: 340px; }
-    .featured-title { font-size: 36px; }
+    .featured-title { font-size: 30px; }
     .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
@@ -226,7 +244,7 @@ const coverSrc = (cover?: string) => {
     .page-title { font-size: 42px; }
     .page-subtitle { font-size: 16px; }
     .featured-body { padding: 20px 18px 22px; }
-    .featured-title { font-size: 30px; }
+    .featured-title { font-size: 25px; }
     .section-title { font-size: 26px; }
     .cards-grid { grid-template-columns: 1fr; gap: 20px; }
     .post-title { font-size: 25px; }
