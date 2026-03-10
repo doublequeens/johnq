@@ -260,6 +260,34 @@ const coverSrc = (cover?: string) => {
     .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
+  :global(html[data-theme='dark']) .page-title,
+  :global(html[data-theme='dark']) .featured-title,
+  :global(html[data-theme='dark']) .section-title,
+  :global(html[data-theme='dark']) .post-title {
+    color: var(--text-heading);
+  }
+
+  :global(html[data-theme='dark']) .featured-excerpt,
+  :global(html[data-theme='dark']) .post-excerpt,
+  :global(html[data-theme='dark']) .meta-row,
+  :global(html[data-theme='dark']) .featured-date,
+  :global(html[data-theme='dark']) .post-date {
+    color: var(--text-secondary);
+  }
+
+  :global(html[data-theme='dark']) .featured-card,
+  :global(html[data-theme='dark']) .post-card,
+  :global(html[data-theme='dark']) .featured-body,
+  :global(html[data-theme='dark']) .post-body {
+    background: var(--surface-muted);
+    border-color: var(--border-subtle);
+  }
+
+  :global(html[data-theme='dark']) .pill {
+    background: #2d3325;
+    color: #e5e7eb;
+  }
+
   @media (max-width: 760px) {
     .page-shell { width: calc(100vw - 24px); }
     .page-title { font-size: 27px; }

@@ -44,7 +44,7 @@ import MainLayout from '../layouts/MainLayout.astro';
   .about-text {
     font-size: 16px;
     line-height: 1.8;
-    color: #333333;
+    color: var(--text-primary);
     margin-bottom: 24px;
   }
 
@@ -65,7 +65,17 @@ import MainLayout from '../layouts/MainLayout.astro';
   .about-list li {
     font-size: 16px;
     line-height: 1.8;
-    color: #333333;
+    color: var(--text-primary);
     margin-bottom: 12px;
+  }
+
+  :global(html[data-theme='dark']) .about-title,
+  :global(html[data-theme='dark']) .about-subtitle {
+    color: var(--text-heading);
+  }
+
+  :global(html[data-theme='dark']) .about-text,
+  :global(html[data-theme='dark']) .about-list li {
+    color: var(--text-primary);
   }
 </style>

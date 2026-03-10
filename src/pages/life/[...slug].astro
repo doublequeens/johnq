@@ -427,6 +427,58 @@ const coverSrc = (cover?: string) => {
     margin-right: 0.4em;
   }
 
+  :global(html[data-theme='dark']) .post-wrap,
+  :global(html[data-theme='dark']) .post-content :global(p),
+  :global(html[data-theme='dark']) .post-content :global(li),
+  :global(html[data-theme='dark']) .post-content :global(h1),
+  :global(html[data-theme='dark']) .post-content :global(h2),
+  :global(html[data-theme='dark']) .post-content :global(h3),
+  :global(html[data-theme='dark']) .post-content :global(h4),
+  :global(html[data-theme='dark']) .post-content :global(h5),
+  :global(html[data-theme='dark']) .post-content :global(h6) {
+    color: var(--text-primary);
+  }
+
+  :global(html[data-theme='dark']) .post-content :global(a),
+  :global(html[data-theme='dark']) .toc-panel a.active {
+    color: var(--link-color);
+  }
+
+  :global(html[data-theme='dark']) .post-title {
+    color: var(--text-primary);
+  }
+
+  :global(html[data-theme='dark']) .toc-panel,
+  :global(html[data-theme='dark']) .chrome-bar {
+    background: #171717;
+    border-color: var(--border-subtle);
+  }
+
+  :global(html[data-theme='dark']) .toc-panel a,
+  :global(html[data-theme='dark']) .toc-toggle,
+  :global(html[data-theme='dark']) .chrome-title,
+  :global(html[data-theme='dark']) .post-meta,
+  :global(html[data-theme='dark']) .post-content :global(blockquote) {
+    color: var(--text-secondary);
+  }
+
+  :global(html[data-theme='dark']) .post-content :global(blockquote) {
+    background: #1d1d1d;
+  }
+
+  :global(html[data-theme='dark']) .post-content :global(code),
+  :global(html[data-theme='dark']) .post-content :global(pre),
+  :global(html[data-theme='dark']) .post-content :global(th) {
+    background: #1a1d22;
+    color: var(--text-primary);
+    border-color: #32363f;
+  }
+
+  :global(html[data-theme='dark']) .post-content :global(td),
+  :global(html[data-theme='dark']) .post-content :global(hr) {
+    border-color: #32363f;
+  }
+
   @media (max-width: 980px) {
     .chrome-bar { height: 40px; padding: 0 10px; }
     .chrome-title { font-size: 16px; }

@@ -136,6 +136,23 @@ const coverSrc = (cover?: string) => {
     .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
+  :global(html[data-theme='dark']) .page-subtitle,
+  :global(html[data-theme='dark']) .meta-row,
+  :global(html[data-theme='dark']) .post-date,
+  :global(html[data-theme='dark']) .post-excerpt {
+    color: var(--text-secondary);
+  }
+
+  :global(html[data-theme='dark']) .post-title {
+    color: var(--text-heading);
+  }
+
+  :global(html[data-theme='dark']) .post-card,
+  :global(html[data-theme='dark']) .post-body {
+    background: var(--surface-muted);
+    border-color: var(--border-subtle);
+  }
+
   @media (max-width: 760px) {
     .page-shell { width: calc(100vw - 24px); }
     .page-title { font-size: 40px; }

@@ -319,6 +319,41 @@ const searchItems = [
     }
   }
 
+  :global(html[data-theme='dark']) :global(.brand-logo) {
+    filter: drop-shadow(0 0 2px rgba(183, 193, 139, 0.05));
+  }
+
+  :global(html[data-theme='dark']) .nav-link {
+    color: var(--text-heading);
+  }
+
+  :global(html[data-theme='dark']) .nav-link:hover {
+    color: var(--text-heading);
+    opacity: 0.9;
+  }
+
+  :global(html[data-theme='dark']) .search-open-btn {
+    background: #1b2018;
+    border-color: #3a4332;
+    color: var(--text-secondary);
+  }
+
+  :global(html[data-theme='dark']) .search-dialog-head,
+  :global(html[data-theme='dark']) .search-results {
+    background: #1a1f18;
+    border-color: #3a4332;
+  }
+
+  :global(html[data-theme='dark']) .search-dialog-input,
+  :global(html[data-theme='dark']) :global(.search-item),
+  :global(html[data-theme='dark']) :global(.search-item-title) {
+    color: var(--text-primary);
+  }
+
+  :global(html[data-theme='dark']) :global(.search-item:hover) {
+    background: #262d23;
+  }
+
   @media (max-width: 760px) {
     .bar {
       width: calc(100vw - 24px);
