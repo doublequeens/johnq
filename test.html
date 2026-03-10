@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #333; margin: 0; padding: 20px; }
+    .container { position: relative; display: inline-block; }
+    .ref-image { 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        opacity: 0.8;
+        /* we need to scale the image and SVG to match */
+    }
+    .svg-container { 
+        position: relative; 
+        top: 0; 
+        left: 0; 
+        opacity: 0.6; 
+        color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="box">
+    <img class="ref-image" id="ref" src="file:///Users/qinshujuan/.gemini/antigravity/brain/bf3a370f-8c6f-48af-b579-e39c5d7879b6/media__1773052155133.png" />
+    <div class="svg-container" id="svg-wrap">
+      <!-- SVG goes here -->
+    </div>
+  </div>
+  <script>
+    // Fetch the current SVG from the project
+    fetch('http://localhost:4322/')
+      .then(r => r.text())
+      .then(html => {
+         const parser = new DOMParser();
+         const doc = parser.parseFromString(html, 'text/html');
+         const svg = doc.querySelector('header svg[aria-label="John Q Logo"]');
+         
+         // we need to align the SVG and the image. The image is "media__1773052155133.png".
+         // Let's just make the SVG the same height as the image.
+         const img = document.getElementById('ref');
+         img.onload = () => {
+             svg.style.height = img.height + 'px';
+             svg.style.width = 'auto'; // preserve aspect ratio
+             svg.style.color = 'red';
+             document.getElementById('svg-wrap').appendChild(svg);
+             
+             // Add controls to move SVG around to align them
+             window.offsetX = 0;
+             window.offsetY = 0;
+             window.scale = 1;
+             
+             document.addEventListener('keydown', (e) => {
+                 if(e.key === 'ArrowRight') window.offsetX += 1;
+                 if(e.key === 'ArrowLeft') window.offsetX -= 1;
+                 if(e.key === 'ArrowDown') window.offsetY += 1;
+                 if(e.key === 'ArrowUp') window.offsetY -= 1;
+                 if(e.key === '+') window.scale += 0.01;
+                 if(e.key === '-') window.scale -= 0.01;
+                 
+                 document.getElementById('svg-wrap').style.transform = `translate(${window.offsetX}px, ${window.offsetY}px) scale(${window.scale})`;
+             });
+         };
+      });
+  </script>
+</body>
+</html>

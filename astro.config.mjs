@@ -3,7 +3,7 @@ import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
   site: 'https://qinshujuan.github.io/johnq',
-  base: '/johnq_website',
+  base: '/',
   trailingSlash: 'always',
   markdown: {
     remarkPlugins: [remarkGfm],

@@ -95,10 +95,11 @@ const coverSrc = (cover?: string) => {
   .page-head { margin: 10px 0 50px; }
   .page-title {
     margin: 0;
-    font-size: 40px;
+    font-size: 25px;
     line-height: 1.2;
     letter-spacing: -0.025em;
-    font-weight: 550;
+    font-weight: 600;
+    color: #4b4b4b;
   }
   .page-subtitle { margin: 12px 0 0; font-size: 19px; color: #5b5b5b; }
 
@@ -108,9 +109,15 @@ const coverSrc = (cover?: string) => {
     grid-template-columns: minmax(0, 1.55fr) minmax(360px, 1fr);
     text-decoration: none;
     color: inherit;
-    background: #fff;
+    background: #f3f4f4;
     border: 1px solid #ececec;
     overflow: hidden;
+    transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+  }
+  .featured-card:hover {
+    border-color: #dcdcc8;
+    box-shadow: 0 12px 30px rgba(30, 41, 59, 0.14), 0 3px 10px rgba(30, 41, 59, 0.08);
+    transform: translateY(-2px);
   }
   .featured-cover {
     width: 100%;
@@ -125,13 +132,15 @@ const coverSrc = (cover?: string) => {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: #f3f4f4;
   }
   .featured-title {
     margin: 14px 0 14px;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.08;
     letter-spacing: -0.02em;
     font-weight: 400;
+    color: #4b4b4b;
   }
   .featured-date {
     display: block;
@@ -143,7 +152,7 @@ const coverSrc = (cover?: string) => {
 
   .featured-excerpt {
     margin: 0;
-    color: #4e4e4e;
+    color: #7a7a7a;
     font-size: 17px;
     line-height: 1.6;
   }
@@ -153,21 +162,29 @@ const coverSrc = (cover?: string) => {
     font-size: 32px;
     line-height: 1.2;
     letter-spacing: -0.01em;
+    color: #4b4b4b;
   }
 
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 30px 24px;
+    align-items: start;
   }
 
   .post-card {
     text-decoration: none;
     color: inherit;
-    background: #fff;
+    background: #f3f4f4;
     border: 1px solid #ececec;
     display: flex;
     flex-direction: column;
+    transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+  }
+  .post-card:hover {
+    border-color: #dcdcc8;
+    box-shadow: 0 10px 24px rgba(30, 41, 59, 0.12), 0 2px 8px rgba(30, 41, 59, 0.08);
+    transform: translateY(-2px);
   }
 
   .post-cover {
@@ -178,7 +195,10 @@ const coverSrc = (cover?: string) => {
     background: #e8e8e8;
   }
 
-  .post-body { padding: 16px 18px 18px; }
+  .post-body {
+    padding: 16px 18px 18px;
+    background: #f3f4f4;
+  }
 
   .meta-row {
     display: flex;
@@ -210,10 +230,11 @@ const coverSrc = (cover?: string) => {
 
   .post-title {
     margin: 10px 0 10px;
-    font-size: 30px;
+    font-size: 25px;
     line-height: 1.17;
     letter-spacing: -0.015em;
     font-weight: 400;
+    color: #4b4b4b;
   }
 
   .post-date {
@@ -226,7 +247,7 @@ const coverSrc = (cover?: string) => {
 
   .post-excerpt {
     margin: 0;
-    color: #4e4e4e;
+    color: #7a7a7a;
     font-size: 15px;
     line-height: 1.55;
   }
@@ -235,18 +256,18 @@ const coverSrc = (cover?: string) => {
     .page-shell { width: min(1020px, calc(100vw - 36px)); }
     .featured-card { grid-template-columns: 1fr; }
     .featured-cover { min-height: 340px; }
-    .featured-title { font-size: 30px; }
+    .featured-title { font-size: 25px; }
     .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
   @media (max-width: 760px) {
     .page-shell { width: calc(100vw - 24px); }
-    .page-title { font-size: 42px; }
+    .page-title { font-size: 27px; }
     .page-subtitle { font-size: 16px; }
     .featured-body { padding: 20px 18px 22px; }
-    .featured-title { font-size: 25px; }
+    .featured-title { font-size: 20px; }
     .section-title { font-size: 26px; }
     .cards-grid { grid-template-columns: 1fr; gap: 20px; }
-    .post-title { font-size: 25px; }
+    .post-title { font-size: 20px; }
   }
 </style>

@@ -1,4 +1,6 @@
 ---
+import Logo from './Logo.astro';
+
 const base = import.meta.env.BASE_URL;
 const navItems = [
   { name: 'Home', href: `${base}` },
@@ -10,7 +12,9 @@ const navItems = [
 
 <header class="header">
   <div class="bar">
-    <a href={base} class="brand">John Q</a>
+    <a href={base} class="brand" aria-label="John Q home">
+      <Logo class="brand-logo" />
+    </a>
 
     <nav class="nav" aria-label="Main navigation">
       {navItems.map((item) => (
@@ -18,7 +22,9 @@ const navItems = [
       ))}
     </nav>
 
-    <div class="right-spacer" aria-hidden="true">John Q</div>
+    <div class="right-spacer" aria-hidden="true">
+      <Logo class="brand-logo" />
+    </div>
   </div>
 </header>
 
@@ -40,19 +46,21 @@ const navItems = [
 
   .brand,
   .right-spacer {
-    font-size: 35px;
-    line-height: 1;
-    letter-spacing: -0.025em;
-    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
     white-space: nowrap;
   }
 
   .brand {
-    color: #181818;
     text-decoration: none;
+    color: #6b8e23;
   }
 
-  .brand:hover { color: #101010; }
+  :global(.brand-logo) {
+    width: 220px;
+    height: auto;
+    display: block;
+  }
 
   .right-spacer {
     visibility: hidden;
@@ -83,9 +91,8 @@ const navItems = [
       width: min(1020px, calc(100vw - 36px));
     }
 
-    .brand,
-    .right-spacer {
-      font-size: 42px;
+    :global(.brand-logo) {
+      width: 200px;
     }
 
     .nav-link {
@@ -100,8 +107,8 @@ const navItems = [
       gap: 12px;
     }
 
-    .brand {
-      font-size: 34px;
+    :global(.brand-logo) {
+      width: 150px;
     }
 
     .nav {

@@ -1,0 +1,56 @@
+---
+// Custom John Q wordmark — exact replica of reference image
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 1020 280"
+  xmlns="http://www.w3.org/2000/svg"
+  class={className}
+  aria-label="John Q Logo"
+  fill="none"
+>
+  <!--
+    Layout grid:
+    baseline=240, x-height=140, cap-height=30
+    Lowercase vertical center y=190
+  -->
+  <g
+    transform="translate(55, 76) scale(0.6)"
+    stroke="currentColor"
+    stroke-width="22"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <!-- J: vertical stem (2/3 height) + 90° quarter-circle arc curving left to baseline -->
+    <path d="M 120 30 V 170 A 70 70 0 0 1 50 240" />
+
+    <!-- o: near-circle, center=(230,170) r=70, gap at bottom-left (6→9 o'clock open) -->
+    <path d="M 160 170 A 70 70 0 1 1 230 240" stroke-linecap="round" />
+
+    <!-- h: full-height left stem + detached 90° geometric arch + short right leg -->
+    <path d="M 340 30 V 240" />
+    <path d="M 378 118 A 60 60 0 0 1 480 160 V 240" />
+
+    <!-- n: left stem (o-height) + detached 90° quarter-arc + right leg (half height) -->
+    <path d="M 520 100 V 240" />
+    <path d="M 590 100 A 70 70 0 0 1 660 170 V 240" />
+
+    <!-- Q: standard circle, center=(820,135), r=105, gap at bottom-right -->
+    <path d="M 873 226 A 105 105 0 1 1 911 188" />
+
+    <!-- Q tail: diagonal from near-center inside circle through gap to lower-right -->
+    <line x1="835" y1="150" x2="925" y2="240" />
+  </g>
+</svg>
+
+<style>
+  svg {
+    display: block;
+    height: auto;
+    color: #787838;
+  }
+</style>
